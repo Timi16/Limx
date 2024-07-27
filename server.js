@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
-//const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/userRoutes');
 //const studentRoutes = require('./routes/students');
 //const teacherRoutes = require('./routes/teachers');
 //const classRoutes = require('./routes/classes');
@@ -23,11 +23,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 connectDB();
 
 // Routes
-//app.use('/api/auth', authRoutes);
-//app.use('/api/students', studentRoutes);
-//app.use('/api/teachers', teacherRoutes);
-//app.use('/api/classes', classRoutes);
-//app.use('/api/attendance', attendanceRoutes);
+app.use('/api', authRoutes);
 
 // Start the server
 app.listen(3000, () => console.log('Server running on port 3000'));
