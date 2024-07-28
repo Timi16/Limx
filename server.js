@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/userRoutes');
 const gradeRoutes = require('./routes/gradeRoutes'); 
+const path = require('path');
 //const studentRoutes = require('./routes/students');
 //const teacherRoutes = require('./routes/teachers');
 //const classRoutes = require('./routes/classes');
