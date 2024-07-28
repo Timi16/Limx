@@ -10,7 +10,7 @@ const gradeRoutes = require('./routes/gradeRoutes');
 const path = require('path');
 const courseRoutes=require('./routes/courseRoutes');
 //const studentRoutes = require('./routes/students');
-//const teacherRoutes = require('./routes/teachers');
+const teacherRoutes = require('./routes/teachers');
 //const classRoutes = require('./routes/classes');
 //const attendanceRoutes = require('./routes/attendance');
 
@@ -30,6 +30,6 @@ connectDB();
 app.use('/api', authRoutes);
 app.use('/api/grades', gradeRoutes);
 app.use('/api/courses', courseRoutes);
-
+app.use('/api/teachers', teacherRoutes); 
 // Start the server
 app.listen(3000, () => console.log('Server running on port 3000'));
