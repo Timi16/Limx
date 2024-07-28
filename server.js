@@ -11,7 +11,7 @@ const path = require('path');
 const courseRoutes=require('./routes/courseRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
-const attendanceRoutes = require('./routes/attendance');
+const attendanceRoutes = require('./routes/attendanceRoutes');
 const adminRoutes= require('./routes/adminRoutes');
 // Initialize Express app
 const app = express();
