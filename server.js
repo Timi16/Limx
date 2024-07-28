@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/userRoutes');
+const gradeRoutes = require('./routes/gradeRoutes'); 
 //const studentRoutes = require('./routes/students');
 //const teacherRoutes = require('./routes/teachers');
 //const classRoutes = require('./routes/classes');
@@ -18,12 +19,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));  // Serve uploaded files
 
 // Connect to MongoDB
 connectDB();
 
 // Routes
 app.use('/api', authRoutes);
+app.use('/api/grades', gradeRoutes);
 
 // Start the server
 app.listen(3000, () => console.log('Server running on port 3000'));
