@@ -12,7 +12,7 @@ const courseRoutes=require('./routes/courseRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
 //const classRoutes = require('./routes/classes');
-//const attendanceRoutes = require('./routes/attendance');
+const attendanceRoutes = require('./routes/attendance');
 
 // Initialize Express app
 const app = express();
@@ -32,5 +32,6 @@ app.use('/api/grades', gradeRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/teachers', teacherRoutes); 
 app.use('/api/students', studentRoutes);
+app.use('/api/attendance', attendanceRoutes);
 // Start the server
 app.listen(3000, () => console.log('Server running on port 3000'));
