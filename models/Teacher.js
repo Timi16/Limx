@@ -6,10 +6,22 @@ const TeacherSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    courses: [{
+    subjects: [{
         type: String,
         required: true,
     }],
+    bio: {
+        type: String,
+        required: false,
+    },
+    profilePicture: {
+        type: String,
+        required: false,
+    },
+    dateJoined: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 module.exports = mongoose.model('Teacher', TeacherSchema);
