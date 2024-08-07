@@ -1,20 +1,19 @@
 const mongoose = require('mongoose');
-const Admin = require('../models/Admin');
+const User = require('../models/User');
+const connectDB = require('../config/db');
 require('dotenv').config();
 
 const seedAdmin = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await connectDB();
 
-        const adminExists = await Admin.findOne({ email: process.env.ADMIN_EMAIL });
+        const adminExists = await User.findOne({ email: process.env.ADMIN_EMAIL, role: 'admin' });
         if (!adminExists) {
-            const admin = new Admin({
+            const admin = new User({
                 email: process.env.ADMIN_EMAIL,
                 username: process.env.ADMIN_USERNAME,
                 password: process.env.ADMIN_PASSWORD,
+                role: 'admin'
             });
 
             await admin.save();
@@ -26,6 +25,7 @@ const seedAdmin = async () => {
         mongoose.disconnect();
     } catch (error) {
         console.error('Error seeding admin user: ', error);
+        process.exit(1);
     }
 };
 
